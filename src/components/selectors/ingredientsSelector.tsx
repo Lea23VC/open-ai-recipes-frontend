@@ -41,7 +41,7 @@ export default function IngredientsSelector({
       disableCloseOnSelect
       getOptionLabel={(option) => option}
       renderOption={(props, option, { selected }) => (
-        <li {...props} key={nanoid() + selected}>
+        <li {...props} key={option}>
           <Checkbox
             key={nanoid()}
             icon={icon}
