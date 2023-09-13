@@ -13,12 +13,16 @@ export default function SelectedIngredientsCaption() {
   return (
     <Box>
       <Box className="pb-4">
-        <Typography variant="h6">Ingredientes seleccionados:</Typography>
+        <Typography variant="h6" className="text-black font-roboto">
+          Ingredientes seleccionados:
+        </Typography>
       </Box>
       <Grid container columnSpacing={5} rowSpacing={2}>
         {allIngredients.map((ingredient, index) => (
           <Grid item key={index}>
-            <Typography variant="body1">{ingredient}</Typography>
+            <Typography variant="body1" className="text-black font-roboto">
+              {ingredient}
+            </Typography>
           </Grid>
         ))}
       </Grid>

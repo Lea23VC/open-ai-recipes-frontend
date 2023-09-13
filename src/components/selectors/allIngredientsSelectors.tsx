@@ -10,14 +10,22 @@ export default function AllIngredientsSelector() {
   return (
     <Box>
       <Box className="pb-10">
-        <Typography variant="h3">Seleccione los ingredientes</Typography>
+        <Typography
+          className="font-roboto text-black text-3xl font-bold"
+          variant="h3"
+        >
+          Seleccione los ingredientes
+        </Typography>
       </Box>
 
       <Grid container spacing={3}>
         {ingredients?.map((ingredient, index) => (
           <Grid item key={index} xs={12} lg={6}>
-            <Box className="pb-4">
-              <Typography variant="h4" className="!text-base">
+            <Box className="pb-3">
+              <Typography
+                variant="h4"
+                className="!text-base font-robot text-black font-semibold"
+              >
                 {ingredient.label}
               </Typography>
             </Box>
