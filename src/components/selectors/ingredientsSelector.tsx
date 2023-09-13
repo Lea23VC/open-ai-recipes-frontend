@@ -10,9 +10,14 @@ import { IngredientList } from '@/ts/types/ingredients.type';
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
-export default function IngredientsSelector(ingredientList: IngredientList) {
+export default function IngredientsSelector({
+  ingredientList,
+}: {
+  ingredientList: IngredientList;
+}) {
   return (
     <Autocomplete
+      className="!w-full"
       multiple
       id="ingredients-selector"
       options={ingredientList.ingredients || []}
@@ -29,7 +34,6 @@ export default function IngredientsSelector(ingredientList: IngredientList) {
           {option}
         </li>
       )}
-      style={{ width: 500 }}
       renderInput={(params) => <TextField {...params} label="Ingredientes" />}
     />
   );
