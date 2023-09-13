@@ -5,7 +5,7 @@ import axios from 'axios';
 export default async function fetchIngredients() {
   const ingredientsURL = API_URL + 'api/ingredients';
   return axios
-    .get<{ data: IngredientList }>(ingredientsURL)
+    .get<{ data: IngredientList[] }>(ingredientsURL)
     .then((response) => response.data)
     .catch((error) => {
       throw error;
