@@ -14,8 +14,8 @@ export default function AllIngredientsSelector() {
       </Box>
 
       <Grid container spacing={3}>
-        {ingredients?.map((ingredient) => (
-          <Grid item key={ingredient.key} xs={12} lg={6}>
+        {ingredients?.map((ingredient, index) => (
+          <Grid item key={index} xs={12} lg={6}>
             <Box className="pb-4">
               <Typography variant="h4" className="!text-base">
                 {ingredient.label}

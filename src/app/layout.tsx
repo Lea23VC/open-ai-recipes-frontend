@@ -2,6 +2,7 @@ import ThemeRegistry from '@/components/ThemeRegistry/ThemeRegistry';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { IngredientsProvider } from '@/context/IngredientsContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -16,10 +17,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ThemeRegistry>
-      <html lang="en">
-        <body className={inter.className}>{children}</body>
-      </html>
-    </ThemeRegistry>
+    <IngredientsProvider>
+      <ThemeRegistry>
+        <html lang="en">
+          <body className={inter.className}>{children}</body>
+        </html>
+      </ThemeRegistry>
+    </IngredientsProvider>
   );
 }

@@ -6,7 +6,29 @@ export default function ingredientsReducer(
 ) {
   switch (action.type) {
     case 'UPDATE':
-      return state;
+      const updatedIngredientsList = [...state.ingredientsList];
+      const index = updatedIngredientsList.findIndex(
+        (item) => item.key === action.payload.key,
+      );
+
+      if (index !== -1) {
+        if (action.payload.ingredients.length > 0) {
+          updatedIngredientsList[index] = {
+            ...updatedIngredientsList[index],
+            ingredients: action.payload.ingredients,
+          };
+        } else {
+          updatedIngredientsList.splice(index, 1);
+        }
+      } else {
+        updatedIngredientsList.push(action.payload);
+      }
+
+      return {
+        ...state,
+        ingredientsList: updatedIngredientsList,
+      };
+
     default:
       return state;
   }

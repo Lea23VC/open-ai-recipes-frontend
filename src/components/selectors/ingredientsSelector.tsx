@@ -6,6 +6,9 @@ import Autocomplete from '@mui/material/Autocomplete';
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import { IngredientList } from '@/ts/types/ingredients.type';
+import { use, useContext } from 'react';
+import { useIngredientsContext } from '@/context/IngredientsContext';
+import { nanoid } from 'nanoid';
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -15,8 +18,22 @@ export default function IngredientsSelector({
 }: {
   ingredientList: IngredientList;
 }) {
+  const { state, dispatch } = useIngredientsContext();
+
+  console.log('state: ', state);
+
   return (
     <Autocomplete
+      onChange={(event, value) => {
+        dispatch({
+          type: 'UPDATE',
+          payload: {
+            label: ingredientList.label,
+            ingredients: value as string[],
+            key: ingredientList.key,
+          },
+        });
+      }}
       className="!w-full"
       multiple
       id="ingredients-selector"
@@ -24,8 +41,9 @@ export default function IngredientsSelector({
       disableCloseOnSelect
       getOptionLabel={(option) => option}
       renderOption={(props, option, { selected }) => (
-        <li {...props}>
+        <li {...props} key={nanoid() + selected}>
           <Checkbox
+            key={nanoid()}
             icon={icon}
             checkedIcon={checkedIcon}
             style={{ marginRight: 8 }}

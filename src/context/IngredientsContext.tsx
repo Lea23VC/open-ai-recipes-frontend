@@ -1,3 +1,5 @@
+'use client';
+
 import ingredientsReducer from '@/reducers/ingredientsReducer';
 import {
   IngredientsContextType,
@@ -5,11 +7,11 @@ import {
 } from '@/ts/types/reducers.type';
 import React, { createContext, useReducer, useContext, ReactNode } from 'react';
 
-const CounterContext = createContext<IngredientsContextType | undefined>(
+const IngredientsContext = createContext<IngredientsContextType | undefined>(
   undefined,
 );
 
-export const CounterProvider: React.FC<{ children: ReactNode }> = ({
+export const IngredientsProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const initialState: IngredientsState = { ingredientsList: [] };
@@ -17,14 +19,14 @@ export const CounterProvider: React.FC<{ children: ReactNode }> = ({
   const [state, dispatch] = useReducer(ingredientsReducer, initialState);
 
   return (
-    <CounterContext.Provider value={{ state, dispatch }}>
+    <IngredientsContext.Provider value={{ state, dispatch }}>
       {children}
-    </CounterContext.Provider>
+    </IngredientsContext.Provider>
   );
 };
 
-export const useCounter = (): IngredientsContextType => {
-  const context = useContext(CounterContext);
+export const useIngredientsContext = (): IngredientsContextType => {
+  const context = useContext(IngredientsContext);
   if (!context) {
     throw new Error('useCounter must be used within a CounterProvider');
   }

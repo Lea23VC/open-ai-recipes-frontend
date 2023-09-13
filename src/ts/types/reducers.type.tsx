@@ -5,7 +5,7 @@ export interface IngredientsState {
   ingredientsList: IngredientList[];
 }
 
-export type IngredientsAction = { type: 'UPDATE' };
+export type IngredientsAction = { type: 'UPDATE'; payload: IngredientList };
 
 export interface IngredientsContextType {
   state: IngredientsState;
