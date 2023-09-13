@@ -5,7 +5,12 @@ export interface IngredientsState {
   ingredientsList: IngredientList[];
 }
 
-export type IngredientsAction = { type: 'UPDATE'; payload: IngredientList };
+export type IngredientsAction =
+  | { type: 'UPDATE'; payload: IngredientList }
+  | {
+      type: 'OBTAIN_RECIPE';
+      payload: IngredientList[];
+    };
 
 export interface IngredientsContextType {
   state: IngredientsState;

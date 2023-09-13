@@ -20,8 +20,6 @@ export default function IngredientsSelector({
 }) {
   const { state, dispatch } = useIngredientsContext();
 
-  console.log('state: ', state);
-
   return (
     <Autocomplete
       onChange={(event, value) => {
