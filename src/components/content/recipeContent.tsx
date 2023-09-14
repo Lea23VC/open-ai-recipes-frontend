@@ -11,30 +11,29 @@ export default function RecipeContent({ recipe }: { recipe: string }) {
       color: theme.palette.text.primary,
     },
     '& h1': {
-      fontSize: '2.2rem',
+      fontSize: '1.4rem',
       fontWeight: 700,
-      paddingBottom: '1rem',
       lineHeight: '2.5rem',
 
       [theme.breakpoints.down('md')]: {
-        fontSize: '1.5rem',
+        fontSize: '1.2rem',
       },
       [theme.breakpoints.down('sm')]: {
-        fontSize: '1.2rem',
+        fontSize: '1.0rem',
       },
     },
 
     '& h2, & h3': {
-      paddingTop: '1.8rem',
-      fontSize: '2rem',
+      paddingTop: '1.4rem',
+      fontSize: '1.2rem',
       fontWeight: 700,
       paddingBottom: '1.7rem',
 
       [theme.breakpoints.down('md')]: {
-        fontSize: '1.2rem',
+        fontSize: '1.0rem',
       },
       [theme.breakpoints.down('sm')]: {
-        fontSize: '1rem',
+        fontSize: '0.90rem',
       },
     },
 
@@ -65,8 +64,11 @@ export default function RecipeContent({ recipe }: { recipe: string }) {
   return (
     <Box>
       <Box className="pb-5">
-        <Typography variant="h3" className="font-roboto text-black">
-          Contenido de la receta
+        <Typography
+          className="font-roboto text-black text-3xl font-bold"
+          variant="h3"
+        >
+          Resultado:
         </Typography>
       </Box>
       <StyledHTMLBox>

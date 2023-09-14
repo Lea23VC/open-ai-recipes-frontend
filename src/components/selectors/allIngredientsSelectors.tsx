@@ -47,6 +47,7 @@ export default function AllIngredientsSelector() {
             });
           }}
           variant="contained"
+          className="bg-purple-500 text-white"
         >
           Limpiar ingredientes
         </Button>

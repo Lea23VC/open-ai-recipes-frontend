@@ -16,6 +16,17 @@ export function useGenerateRecipe() {
     }
   }, [recipe]);
 
+  useEffect(() => {
+    if (loading) {
+      document.body.classList.add('disable-scroll');
+    } else {
+      document.body.classList.remove('disable-scroll');
+    }
+    return () => {
+      document.body.classList.remove('disable-scroll');
+    };
+  }, [loading]);
+
   function generateRecipe() {
     setLoading(true);
     fetchRecipe(ingredientsList)
