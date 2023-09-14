@@ -29,6 +29,12 @@ export default function ingredientsReducer(
         ingredientsList: updatedIngredientsList,
       };
 
+    case 'RESET':
+      return {
+        ...state,
+        ingredientsList: [],
+      };
+
     default:
       return state;
   }

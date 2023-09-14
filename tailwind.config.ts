@@ -24,5 +24,8 @@ const config: Config = {
     },
   },
   plugins: [],
+  corePlugins: {
+    fontFamily: true,
+  },
 };
 export default config;

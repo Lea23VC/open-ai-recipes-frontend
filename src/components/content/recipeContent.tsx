@@ -8,11 +8,13 @@ export default function RecipeContent({ recipe }: { recipe: string }) {
   const StyledHTMLBox = styled(Box)(({ theme }) => ({
     '*': {
       fontFamily: 'Roboto, sans-serif',
+      color: theme.palette.text.primary,
     },
     '& h1': {
-      fontSize: '2.5rem',
+      fontSize: '2.2rem',
       fontWeight: 700,
-      paddingBottom: '2rem',
+      paddingBottom: '1rem',
+      lineHeight: '2.5rem',
 
       [theme.breakpoints.down('md')]: {
         fontSize: '1.5rem',
@@ -23,7 +25,7 @@ export default function RecipeContent({ recipe }: { recipe: string }) {
     },
 
     '& h2, & h3': {
-      paddingTop: '2rem',
+      paddingTop: '1.8rem',
       fontSize: '2rem',
       fontWeight: 700,
       paddingBottom: '1.7rem',

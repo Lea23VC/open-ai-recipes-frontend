@@ -10,6 +10,9 @@ export type IngredientsAction =
   | {
       type: 'OBTAIN_RECIPE';
       payload: IngredientList[];
+    }
+  | {
+      type: 'RESET';
     };
 
 export interface IngredientsContextType {

@@ -3,9 +3,12 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import IngredientsSelector from './ingredientsSelector';
 import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import { useIngredientsContext } from '@/context/IngredientsContext';
 
 export default function AllIngredientsSelector() {
-  const { ingredients, loading, called } = useFetchIngredients();
+  const { ingredients } = useFetchIngredients();
+  const { state, dispatch } = useIngredientsContext();
 
   return (
     <Box>
@@ -35,6 +38,19 @@ export default function AllIngredientsSelector() {
           </Grid>
         ))}
       </Grid>
+
+      <Box>
+        <Button
+          onClick={() => {
+            dispatch({
+              type: 'RESET',
+            });
+          }}
+          variant="contained"
+        >
+          Limpiar ingredientes
+        </Button>
+      </Box>
     </Box>
   );
 }

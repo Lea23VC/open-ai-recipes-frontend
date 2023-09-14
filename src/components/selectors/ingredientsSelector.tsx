@@ -20,6 +20,12 @@ export default function IngredientsSelector({
 }) {
   const { state, dispatch } = useIngredientsContext();
 
+  const { ingredientsList: ingredientsListFromState } = state;
+
+  const currentIngredients = ingredientsListFromState.find(
+    (item) => item.key === ingredientList.key,
+  );
+
   return (
     <Autocomplete
       onChange={(event, value) => {
@@ -32,6 +38,7 @@ export default function IngredientsSelector({
           },
         });
       }}
+      value={currentIngredients?.ingredients || []}
       className="!w-full"
       multiple
       id="ingredients-selector"

@@ -2,6 +2,7 @@
 import RecipeContent from '@/components/content/recipeContent';
 import SelectedIngredientsCaption from '@/components/content/selectedIngredientsCaption';
 import AllIngredientsSelector from '@/components/selectors/allIngredientsSelectors';
+import { useIngredientsContext } from '@/context/IngredientsContext';
 import { useGenerateRecipe } from '@/hook/useGenerateRecipe';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
@@ -10,6 +11,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 export default function Home() {
   const { recipe, generateRecipe, loading } = useGenerateRecipe();
+  const { state } = useIngredientsContext();
 
   return (
     <main>
@@ -26,32 +28,34 @@ export default function Home() {
               <SelectedIngredientsCaption />
             </Box>
             {recipe && (
-              <Box className="pb-10">
+              <Box className="pb-10" id="recipe">
                 <RecipeContent recipe={recipe} />
               </Box>
             )}
 
-            <Box>
-              <Backdrop
-                sx={{
-                  color: '#fff',
-                  zIndex: (theme) => theme.zIndex.drawer + 1,
-                }}
-                open={loading}
-              >
-                <Box sx={{ display: 'flex' }}>
-                  <CircularProgress />
-                </Box>
-              </Backdrop>
-            </Box>
             <Box className="fixed bottom-14 right-10 z-50">
-              <Button variant="contained" onClick={generateRecipe}>
-                Obtener receta
+              <Button
+                disabled={state.ingredientsList.length > 0 ? false : true}
+                variant="contained"
+                onClick={generateRecipe}
+              >
+                {recipe ? 'Obtener nueva receta' : 'Obtener receta'}
               </Button>
             </Box>
           </Box>
         </Box>
       </Box>
+      <Backdrop
+        sx={{
+          color: '#fff',
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+        }}
+        open={true}
+      >
+        <Box>
+          <CircularProgress />
+        </Box>
+      </Backdrop>
     </main>
   );
 }
