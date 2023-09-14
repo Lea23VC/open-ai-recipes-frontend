@@ -8,6 +8,7 @@ export function useGenerateRecipe() {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [recipe, setRecipe] = useState<string>();
+  const [error, setError] = useState<string | null>();
 
   useEffect(() => {
     const element = document.getElementById('recipe');
@@ -29,16 +30,17 @@ export function useGenerateRecipe() {
 
   function generateRecipe() {
     setLoading(true);
+    setError(null);
     fetchRecipe(ingredientsList)
       .then((response) => {
         setRecipe(response.data);
       })
       .catch((error) => {
-        console.log(error);
+        setError(error.message);
       })
       .finally(() => {
         setLoading(false);
       });
   }
-  return { recipe, generateRecipe, loading };
+  return { recipe, generateRecipe, loading, error };
 }

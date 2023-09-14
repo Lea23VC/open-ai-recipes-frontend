@@ -9,7 +9,7 @@ import { useGenerateRecipe } from '@/hook/useGenerateRecipe';
 import Box from '@mui/material/Box';
 
 export default function Home() {
-  const { recipe, generateRecipe, loading } = useGenerateRecipe();
+  const { recipe, generateRecipe, loading, error } = useGenerateRecipe();
   const { state } = useIngredientsContext();
 
   return (
@@ -30,7 +30,7 @@ export default function Home() {
 
             {recipe && (
               <Box className="pb-10" id="recipe">
-                <RecipeContent recipe={recipe} />
+                <RecipeContent recipe={recipe} error={error} />
               </Box>
             )}
 
